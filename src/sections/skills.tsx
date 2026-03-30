@@ -11,7 +11,7 @@ type skillsProps = {
 
 
 function Skills({ t }: skillsProps) {
-    const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Git", "GitHub", "TailwindCSS","Figma"];
+    const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Git", "Github", "TailwindCSS","Figma"];
     const doubleSkills = [...skills, ...skills];
     const activeSection = useActiveSection(["about","skills", "projects", "contact"]);
     return (
