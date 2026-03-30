@@ -24,7 +24,7 @@ function Navbar({ language, setLanguage, t }: NavbarProps) {
     <nav className= "p-2 gap-2 flex items-center justify-center animate-fade-in-down shadow-blue-800/30 shadow-md sticky top-0 z-50" id="navbar">
       <div className="absolute left-4 top-4 w-24 h-24 ">
         <a href="#home">
-        <img src="/ft-full.png"alt="logo" className="hover:animate-pulse hover:animate-iteration-count-infinite cursor-pointer" />
+        <img src="ft-full.png"alt="logo" className="hover:animate-pulse hover:animate-iteration-count-infinite cursor-pointer" />
         </a>
       </div>
         <a className={`p-4 hover:animate-pulsing hover:animate-iteration-count-infinite cursor-pointer ${getLinkClass("about")}`} href="#about">{t("about")}</a>
