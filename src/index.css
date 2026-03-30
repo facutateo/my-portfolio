@@ -1,0 +1,241 @@
+@import 'tailwindcss';
+@plugin "@midudev/tailwind-animations";
+
+
+:root {
+  --primary-color: #aeb8c4;
+  --secondary-color: #1e40af;
+  --background-color: #f5f5f5;
+  --text-color: #070707;
+  --border-color: #7593f5be;
+  --div-background-color: #A8B9F0;
+  --scrollbar-color: #728eeb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1e1e1e;
+    --text-color: #f5f5f5;
+    --primary-color: #424242;
+    --secondary-color: #1e40af;
+    --border-color: rgba(54, 57, 243, 0.822);
+    --div-background-color: #163083;
+    --scrollbar-color: #07227a;
+  }
+}
+:root.light {
+  --primary-color: #aeb8c4;
+  --secondary-color: #1e40af;
+  --background-color: #ffffff;
+  --text-color: #070707;
+  --border-color: #5e81f5be;
+    --div-background-color: #89a0ec;
+  --scrollbar-color: #728eeb;
+
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'CustomFont', system-ui, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  opacity: 80%;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+    transition: color 0.3s;
+}
+button {
+  background-color: var(--div-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+button:hover {
+  background-color: var(--border-color);
+  color: var(--background-color);
+} 
+p {
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+#settigns-div {
+  background-color: var(--div-background-color);
+}
+#navbar {
+  background-color: var(--background-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3b82f6;
+}
+
+#home {
+  background: linear-gradient(var(--div-background-color),var(--background-color));
+}
+
+#link, #github {
+  fill: var(--text-color);
+    transition: fill 0.3s;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/src/fonts/Nunito-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+#presentationcard {
+  background-color: var(--div-background-color);
+}
+
+#skillcard {
+  background-color: var(--div-background-color);
+}
+
+div {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#carrousel {
+  display: flex; 
+  flex-wrap: nowrap;  
+  flex-direction: row;     
+  width: max-content;
+  animation: scrollInfinito 30s linear infinite;
+  gap: 40px;
+  will-change: transform;
+}
+
+#skillcard {
+  flex-shrink: 0;
+}
+
+@keyframes scrollInfinito {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); } 
+}
+
+.carrousel-container {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.view {
+  background-color: var(--div-background-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.proyect-card {
+  box-shadow: var(--div-background-color) 0px 0px 20px;
+  background-color: var(--div-background-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.proyect-card:hover {
+  box-shadow: var(--secondary-color) 0px 0px 30px;
+}
+
+.project-card h2 {
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+@font-face {
+  font-family: 'nunito-light';
+  src: url('/src/fonts/Nunito-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.pdes {
+  font-family: 'nunito-light', system-ui, sans-serif;
+}
+
+section {
+  scroll-margin-top: 20vh; 
+}
+
+.buttondw {
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.buttondw:hover {
+  background-color: var(--border-color);
+  color: var(--background-color);
+}
+
+.divcontac {
+  background-color: var(--div-background-color);
+}
+
+.inputcont {
+  padding: 10px;
+  outline: none;
+  background-color: var(--contact-color);
+  width: 600px;
+  margin: 5px;
+  border: solid 2px var(--border-color);
+  border-radius: 5px;
+  font-family:'nunito-light', system-ui, sans-serif ;
+}
+
+.inputcont::placeholder{
+  color: var(--text-color);
+  opacity: 50%;
+  padding: 5px;
+}
+
+textarea {
+  resize: none;
+}
