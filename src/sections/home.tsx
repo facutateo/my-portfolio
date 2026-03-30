@@ -1,6 +1,6 @@
 import type { Language, TranslationKey } from "../translations/translations";
-import { GitHub } from "../components/logos/github";
-import { LinkedIn } from "../components/logos/linkedln";
+import { GitHub } from "../../public/logos/github";
+import { LinkedIn } from "../../public/logos/linkedln";
 import { useState } from "react";
 
 type homeProps = {
