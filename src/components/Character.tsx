@@ -7,7 +7,7 @@ import { useFrame } from "@react-three/fiber";
 
 export default function Character() {
   const group = useRef<Group>(null!);
-  const { scene, animations } = useGLTF("/mi-pj(final).glb");
+  const { scene, animations } = useGLTF("mi-pj(final).glb");
   const { actions } = useAnimations(animations, group);
   const activeSection = useActiveSection(["about", "skills", "projects", "contact"]);
   const notebookref = useRef<THREE.Mesh>(null)

@@ -14,11 +14,11 @@ function ProjectCard({ t,project,projectdescription }: ProjectCardProps) {
     switch (project) {
         case "todolist":
             currentproject = "https://facutateo.github.io/to-do-list/";
-            curretimage = "/todolist-image.png";
+            curretimage = "todolist-image.png";
             break;
         case "projectrecipes":
             currentproject = "https://facutateo.github.io/recipes-page";
-            curretimage = "/recipe-image.png";
+            curretimage = "recipe-image.png";
             break;
     }
     return (
