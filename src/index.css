@@ -10,6 +10,12 @@
   --border-color: #7593f5be;
   --div-background-color: #A8B9F0;
   --scrollbar-color: #728eeb;
+  --home-gradient-light-start: #a8b9f0;
+  --home-gradient-light-end: #ffffff;
+  --home-gradient-dark-start: #163083;
+  --home-gradient-dark-end: #1e1e1e;
+  --home-gradient-light-opacity: 1;
+  --home-gradient-dark-opacity: 0;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -20,7 +26,20 @@
     --border-color: rgba(54, 57, 243, 0.822);
     --div-background-color: #163083;
     --scrollbar-color: #07227a;
+    --home-gradient-light-opacity: 0;
+    --home-gradient-dark-opacity: 1;
   }
+}
+:root.dark {
+  --background-color: #1e1e1e;
+  --text-color: #f5f5f5;
+  --primary-color: #424242;
+  --secondary-color: #1e40af;
+  --border-color: rgba(54, 57, 243, 0.822);
+  --div-background-color: #163083;
+  --scrollbar-color: #07227a;
+  --home-gradient-light-opacity: 0;
+  --home-gradient-dark-opacity: 1;
 }
 :root.light {
   --primary-color: #aeb8c4;
@@ -28,9 +47,10 @@
   --background-color: #ffffff;
   --text-color: #070707;
   --border-color: #5e81f5be;
-    --div-background-color: #89a0ec;
+  --div-background-color: #89a0ec;
   --scrollbar-color: #728eeb;
-
+  --home-gradient-light-opacity: 1;
+  --home-gradient-dark-opacity: 0;
 }
 body {
   margin: 0;
@@ -79,6 +99,12 @@ html {
   scroll-behavior: smooth;
 }
 
+body,
+#root {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -96,8 +122,35 @@ html {
   background-color: #3b82f6;
 }
 
-#home {
-  background: linear-gradient(var(--div-background-color),var(--background-color));
+section#home {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+section#home::before,
+section#home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+section#home::before {
+  background: linear-gradient(to bottom, var(--home-gradient-light-start), var(--home-gradient-light-end));
+  opacity: var(--home-gradient-light-opacity);
+}
+
+section#home::after {
+  background: linear-gradient(to bottom, var(--home-gradient-dark-start), var(--home-gradient-dark-end));
+  opacity: var(--home-gradient-dark-opacity);
+}
+
+section#home > * {
+  position: relative;
+  z-index: 1;
 }
 
 #link, #github {
@@ -115,15 +168,14 @@ html {
 
 #presentationcard {
   background-color: var(--div-background-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #skillcard {
   background-color: var(--div-background-color);
-}
-
-div {
   transition: background-color 0.3s, color 0.3s;
 }
+
 
 #carrousel {
   display: flex; 
@@ -238,4 +290,203 @@ section {
 
 textarea {
   resize: none;
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding-left: 320px !important;
+    padding-right: 32px !important;
+  }
+
+  #root > div:nth-of-type(2) > div {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 8.5rem;
+  }
+
+  #navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 88px 12px 12px;
+    position: relative;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  #navbar > a {
+    padding: 0.65rem 0.5rem;
+  }
+
+  #navbar > div:first-child {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+    transform: translateX(-50%);
+  }
+
+  #settigns-div {
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    padding: 6px 8px;
+  }
+
+  #root > div:nth-of-type(2) {
+    display: none;
+  }
+
+  main {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  section#home {
+    min-height: 100svh;
+  }
+
+  section#home > div {
+    height: auto;
+    min-height: 100svh;
+    padding: 132px 20px 48px;
+    text-align: center;
+  }
+
+  section#home > div > div:first-child h1:first-child {
+    font-size: clamp(2.3rem, 10vw, 3.5rem);
+    line-height: 1.05;
+  }
+
+  section#home > div > div:first-child h1:last-child {
+    font-size: clamp(1.9rem, 8vw, 3rem);
+    line-height: 1.05;
+  }
+
+  section#home > div > div:last-child {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #about,
+  #skills,
+  #projects,
+  #contact {
+    height: auto;
+    min-height: auto;
+    padding: 48px 0;
+  }
+
+  #presentationcard,
+  .divcontac,
+  .project-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #projects > div:last-child {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-card {
+    width: 100%;
+  }
+
+  .view {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #skills > div:first-child,
+  #contact > div:first-child {
+    padding: 0 0 32px;
+  }
+
+  #skills h1,
+  #contact h1,
+  #projects h1,
+  #about h1:first-child {
+    text-align: center;
+  }
+
+  .carrousel-container {
+    height: 13rem;
+  }
+
+  #carrousel {
+    gap: 20px;
+    animation-duration: 20s;
+  }
+
+  #skillcard {
+    width: 112px;
+    height: 152px;
+    padding: 12px;
+  }
+
+  #skillcard h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #skillcard img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .divcontac {
+    padding: 24px 16px;
+  }
+
+  .inputcont {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0;
+  }
+
+  textarea.inputcont {
+    min-height: 180px;
+  }
+
+  footer,
+  footer div {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #navbar {
+    font-size: 0.88rem;
+    padding-top: 92px;
+  }
+
+  #navbar > a {
+    padding: 0.55rem 0.35rem;
+  }
+
+  #settigns-div {
+    right: 8px;
+    top: 12px;
+  }
+
+  section#home > div {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #presentationcard {
+    padding: 20px;
+  }
 }

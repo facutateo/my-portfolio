@@ -18,7 +18,7 @@ function Home({ t }: homeProps) {
     }, 2000);
     };
     return (
-        <div className="h-screen flex flex-col items-center justify-center relative animate-fade-in" id="home">
+        <div className="h-screen flex flex-col items-center justify-center relative animate-fade-in">
             <div className="flex flex-col items-center">
                 <h1 className="text-7xl font-bold">Facundo Tateossian</h1>
                 <h1 className="text-6xl font-bold">{t("dev")}</h1>
